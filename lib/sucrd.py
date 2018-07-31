@@ -43,7 +43,7 @@ class SucreDaemon():
 
     # common RPC convenience methods
     def is_testnet(self):
-        return self.rpc_command('getinfo')['testnet']
+        return self.rpc_command('getnetworkinfo')['testnet']
 
     def get_masternodes(self):
         mnlist = self.rpc_command('masternodelist', 'full')
@@ -241,7 +241,7 @@ class SucreDaemon():
 
     @property
     def has_sentinel_ping(self):
-        getinfo = self.rpc_command('getinfo')
+        getinfo = self.rpc_command('getnetworkinfo')
         return (getinfo['protocolversion'] >= config.min_sucrd_proto_version_with_sentinel_ping)
 
     def ping(self):
